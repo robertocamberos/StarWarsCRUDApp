@@ -5,7 +5,7 @@ const app = express()
 require('dotenv').config()
 const MongoClient = require('mongodb').MongoClient
 const connectionString = `mongodb+srv://robertocamberos:${process.env.DATABASE_KEY}@cluster0.wfl1zlz.mongodb.net/?retryWrites=true&w=majority`
-
+const port = process.env.PORT || 3000
 
 MongoClient.connect(connectionString, { useUnifiedTopology: true })
   .then(client => {
@@ -65,8 +65,8 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
       .catch(error => console.error(error))
     })
 
-    app.listen(3000, function() {
-      console.log('listening on 3000')
+    app.listen(port, function() {
+      console.log(`listening on ${port}`)
     })
   })
   .catch(error => console.error(error))
